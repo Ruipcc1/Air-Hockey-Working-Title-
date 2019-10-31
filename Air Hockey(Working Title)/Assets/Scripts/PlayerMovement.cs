@@ -8,10 +8,13 @@ public class PlayerMovement : MonoBehaviour
     bool wasJustClicked = true;
     bool canMove;
     Vector2 playerSize;
+
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        playerSize = gameObject.GetComponent<SpriteRenderer>().bounds.extents;
+        playerSize = GetComponent<SpriteRenderer>().bounds.extents;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 wasJustClicked = false;
 
-                if((mousePos.x >= transform.position.x && mousePos.x < transform.position.x + playerSize.x ||
+                if ((mousePos.x >= transform.position.x && mousePos.x < transform.position.x + playerSize.x ||
                 mousePos.x <= transform.position.x && mousePos.x > transform.position.x - playerSize.x) &&
                 (mousePos.y >= transform.position.y && mousePos.y < transform.position.y + playerSize.y ||
                 mousePos.y <= transform.position.y && mousePos.y > transform.position.y - playerSize.y))
@@ -37,14 +40,15 @@ public class PlayerMovement : MonoBehaviour
                     canMove = false;
                 }
             }
+
             if (canMove)
             {
-                transform.position = mousePos;
+                rb.MovePosition(mousePos);
             }
-            else
-            {
-                wasJustClicked = true;
-            }
+        }
+        else
+        {
+            wasJustClicked = true;
         }
     }
 }
