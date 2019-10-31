@@ -7,7 +7,7 @@ public class AIScript : MonoBehaviour
 
     public float MaxMovementSpeed;
     private Rigidbody2D rb;
-    private Vector2 startingPosition;
+    public Vector2 startingPosition;
 
     public Rigidbody2D Puck;
 
@@ -20,7 +20,8 @@ public class AIScript : MonoBehaviour
     private Vector2 targetPosition;
 
     private bool isFirstTimeInOpponentsHalf = true;
-    private float offsetXFromTarget;
+    private float offsetYFromTarget;
+    public bool poop;
 
     private void Start()
     {
@@ -42,21 +43,22 @@ public class AIScript : MonoBehaviour
     {
         float movementSpeed;
 
-        if (Puck.position.y < puckBoundary.Down)
+        if (Puck.position.x > puckBoundary.Right)
         {
+            poop = true;
             if (isFirstTimeInOpponentsHalf)
             {
                 isFirstTimeInOpponentsHalf = false;
-                offsetXFromTarget = Random.Range(-1f, 1f);
+                offsetYFromTarget = Random.Range(-1f, 1f);
             }
 
             movementSpeed = MaxMovementSpeed * Random.Range(0.1f, 0.3f);
-            targetPosition = new Vector2(Mathf.Clamp(Puck.position.x + offsetXFromTarget, playerBoundary.Left,
-                                                    playerBoundary.Right),
-                                        startingPosition.y);
+            targetPosition = new Vector2(startingPosition.x, Mathf.Clamp(Puck.position.y + offsetYFromTarget, playerBoundary.Down,
+                                                    playerBoundary.Up));
         }
         else
         {
+            poop = false;
             isFirstTimeInOpponentsHalf = true;
 
             movementSpeed = Random.Range(MaxMovementSpeed * 0.4f, MaxMovementSpeed);
