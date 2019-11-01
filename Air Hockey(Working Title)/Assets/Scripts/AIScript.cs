@@ -21,7 +21,6 @@ public class AIScript : MonoBehaviour
 
     private bool isFirstTimeInOpponentsHalf = true;
     private float offsetYFromTarget;
-    public bool poop;
 
     private void Start()
     {
@@ -41,34 +40,35 @@ public class AIScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float movementSpeed;
-
-        if (Puck.position.x > puckBoundary.Right)
+        if (!PuckScript.WasGoal)
         {
-            poop = true;
-            if (isFirstTimeInOpponentsHalf)
+            float movementSpeed;
+
+            if (Puck.position.x > puckBoundary.Right)
             {
-                isFirstTimeInOpponentsHalf = false;
-                offsetYFromTarget = Random.Range(-1f, 1f);
+                if (isFirstTimeInOpponentsHalf)
+                {
+                    isFirstTimeInOpponentsHalf = false;
+                    offsetYFromTarget = Random.Range(-1f, 1f);
+                }
+
+                movementSpeed = MaxMovementSpeed * Random.Range(0.1f, 0.3f);
+                targetPosition = new Vector2(startingPosition.x, Mathf.Clamp(Puck.position.y + offsetYFromTarget, playerBoundary.Down,
+                                                        playerBoundary.Up));
+            }
+            else
+            {
+                isFirstTimeInOpponentsHalf = true;
+
+                movementSpeed = Random.Range(MaxMovementSpeed * 0.4f, MaxMovementSpeed);
+                targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
+                                            playerBoundary.Right),
+                                            Mathf.Clamp(Puck.position.y, playerBoundary.Down,
+                                            playerBoundary.Up));
             }
 
-            movementSpeed = MaxMovementSpeed * Random.Range(0.1f, 0.3f);
-            targetPosition = new Vector2(startingPosition.x, Mathf.Clamp(Puck.position.y + offsetYFromTarget, playerBoundary.Down,
-                                                    playerBoundary.Up));
+            rb.MovePosition(Vector2.MoveTowards(rb.position, targetPosition,
+                    movementSpeed * Time.fixedDeltaTime));
         }
-        else
-        {
-            poop = false;
-            isFirstTimeInOpponentsHalf = true;
-
-            movementSpeed = Random.Range(MaxMovementSpeed * 0.4f, MaxMovementSpeed);
-            targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
-                                        playerBoundary.Right),
-                                        Mathf.Clamp(Puck.position.y, playerBoundary.Down,
-                                        playerBoundary.Up));
-        }
-
-        rb.MovePosition(Vector2.MoveTowards(rb.position, targetPosition,
-                movementSpeed * Time.fixedDeltaTime));
     }
 }

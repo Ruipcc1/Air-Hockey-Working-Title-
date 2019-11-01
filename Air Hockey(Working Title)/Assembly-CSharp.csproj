@@ -62,7 +62,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AIScript.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PuckScript.cs" />
+    <Compile Include="Assets\Scripts\ScoreScript.cs" />
     <Compile Include="Assets\Scripts\Types\Boundary.cs" />
+    <None Include="Assets\Fonts\Force Commander\forcecommander.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Air Hockey(Working Title)/Air Hockey(Working Title)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
