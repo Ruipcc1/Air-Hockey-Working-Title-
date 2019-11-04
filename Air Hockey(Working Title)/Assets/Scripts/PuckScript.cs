@@ -9,6 +9,9 @@ public class PuckScript : MonoBehaviour
     public static bool WasGoal { get; private set; }
     private Rigidbody2D rb;
     public bool BlueGoal;
+    public float MaxSpeed;
+
+    public AudioManager audioManager;
 
     // Use this for initialization
     void Start()
@@ -26,15 +29,22 @@ public class PuckScript : MonoBehaviour
                 ScoreScriptInstance.Increment(ScoreScript.Score.PlayerScore);
                 WasGoal = true;
                 BlueGoal = true;
+                audioManager.PlayGoal();
                 StartCoroutine(ResetPuck());
             }
             else if (other.tag == "PlayerGoal")
             {
                 ScoreScriptInstance.Increment(ScoreScript.Score.AiScore);
                 WasGoal = true;
+                audioManager.PlayGoal();
                 StartCoroutine(ResetPuck());
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        audioManager.PlayPuckCollision();
     }
 
     private IEnumerator ResetPuck()
@@ -53,6 +63,10 @@ public class PuckScript : MonoBehaviour
             rb.position = new Vector2(6, 0);
             rb.velocity = new Vector2(0, 0);
         }
+    }
+    private void FixedPudate()
+    {
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, MaxSpeed);
     }
 
 }
