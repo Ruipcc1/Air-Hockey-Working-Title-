@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     bool canMove;
 
     Rigidbody2D rb;
+    Vector2 startingPosition;
 
     public Transform BoundaryHolder;
 
@@ -63,5 +64,9 @@ public class PlayerMovement : MonoBehaviour
         {
             wasJustClicked = true;
         }
+    }
+    public void ResetPosition()
+    {
+        rb.position = startingPosition;
     }
 }

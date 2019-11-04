@@ -71,4 +71,8 @@ public class AIScript : MonoBehaviour
                     movementSpeed * Time.fixedDeltaTime));
         }
     }
+    public void ResetPosition()
+    {
+        rb.position = startingPosition;
+    }
 }
