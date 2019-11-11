@@ -7,7 +7,7 @@ public class AIScript : MonoBehaviour
 
     public float MaxMovementSpeed;
     private Rigidbody2D rb;
-    public Vector2 startingPosition;
+    Vector2 startingPosition;
 
     public Rigidbody2D Puck;
 

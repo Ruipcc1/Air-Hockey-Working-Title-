@@ -2388,7 +2388,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1926290890}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1962993804}
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1926290890
@@ -2470,6 +2481,7 @@ GameObject:
   - component: {fileID: 1962993800}
   - component: {fileID: 1962993802}
   - component: {fileID: 1962993803}
+  - component: {fileID: 1962993804}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -2491,8 +2503,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AiScoreTxt: {fileID: 130243607}
   PlayerScoreTxt: {fileID: 1519547468}
-  uiManager: {fileID: 0}
-  MaxScore: 0
+  uiManager: {fileID: 1962993804}
+  MaxScore: 7
 --- !u!4 &1962993801
 Transform:
   m_ObjectHideFlags: 0
@@ -2625,6 +2637,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1962993804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962993799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cebf95d668b27741bce0076aa9c4935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvasGame: {fileID: 1184974616}
+  CanvasRestart: {fileID: 354058612}
+  WinTxt: {fileID: 1016951108}
+  LooseTxt: {fileID: 273357889}
+  audioManager: {fileID: 1962993802}
+  scoreScript: {fileID: 1962993800}
+  puckScript: {fileID: 284516900}
+  playerMovement: {fileID: 504605242}
+  aiScript: {fileID: 1641563620}
 --- !u!1 &1979182349
 GameObject:
   m_ObjectHideFlags: 0

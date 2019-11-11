@@ -7,8 +7,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip[] PuckCollision;
     public AudioClip Goal;
-    public AudioClip LostGame;
-    public AudioClip WonGame;
+    public AudioClip BlueWins;
+    public AudioClip RedWins;
 
     private AudioSource audioSource;
 
@@ -32,11 +32,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayLostGame()
     {
-        audioSource.PlayOneShot(LostGame);
+        audioSource.PlayOneShot(BlueWins);
     }
 
     public void PlayWonGame()
     {
-        audioSource.PlayOneShot(WonGame);
+        audioSource.PlayOneShot(RedWins);
     }
 }

@@ -10,7 +10,7 @@ public class UIScript : MonoBehaviour
 
     [Header("CanvasRestart")]
     public GameObject WinTxt;
-    public GameObject LooseTxt;
+    public GameObject LoseTxt;
 
     [Header("Other")]
     public AudioManager audioManager;
@@ -32,13 +32,13 @@ public class UIScript : MonoBehaviour
         {
             audioManager.PlayLostGame();
             WinTxt.SetActive(false);
-            LooseTxt.SetActive(true);
+            LoseTxt.SetActive(true);
         }
         else
         {
             audioManager.PlayWonGame();
             WinTxt.SetActive(true);
-            LooseTxt.SetActive(false);
+            LoseTxt.SetActive(false);
         }
     }
 

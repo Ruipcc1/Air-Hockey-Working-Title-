@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        startingPosition = rb.position;
         playerCollider = GetComponent<Collider2D>();
 
         playerBoundary = new Boundary(BoundaryHolder.GetChild(0).position.y,
