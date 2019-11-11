@@ -585,7 +585,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Lose!
+  m_Text: Blue WIns!
 --- !u!222 &273357892
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1457,7 +1457,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You WIn!
+  m_Text: Red WIns!
 --- !u!222 &1016951111
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2383,8 +2383,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c7b23434ece2084aa251e2a124d9623, type: 3}
   - {fileID: 8300000, guid: bd52fd509600b5a4d8a8fa8a988e7044, type: 3}
   Goal: {fileID: 8300000, guid: 64537c09f0e52a94b9230cbdccf52bf7, type: 3}
-  LostGame: {fileID: 0}
-  WonGame: {fileID: 0}
+  BlueWins: {fileID: 0}
+  RedWins: {fileID: 0}
 --- !u!82 &1962993803
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2496,7 +2496,7 @@ MonoBehaviour:
   CanvasGame: {fileID: 1184974616}
   CanvasRestart: {fileID: 354058612}
   WinTxt: {fileID: 1016951108}
-  LooseTxt: {fileID: 273357889}
+  LoseTxt: {fileID: 0}
   audioManager: {fileID: 1962993802}
   scoreScript: {fileID: 1962993800}
   puckScript: {fileID: 284516900}
