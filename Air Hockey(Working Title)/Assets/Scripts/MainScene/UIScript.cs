@@ -60,4 +60,12 @@ public class UIScript : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
+    public void AiSelector()
+    {
+        SceneManager.LoadScene("AISelection");
+    }
+    public void PlayvsPlayer()
+    {
+        SceneManager.LoadScene("LocalMultiplayer");
+    }
 }

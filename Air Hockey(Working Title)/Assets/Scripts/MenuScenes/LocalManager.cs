@@ -13,4 +13,12 @@ public class LocalManager : MonoBehaviour
     {
         SceneManager.LoadScene("LocalMultiplayer");
     }
+    public void AiSelector()
+    {
+        SceneManager.LoadScene("AISelection");
+    }
+    public void Back()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
