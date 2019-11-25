@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AiGoal
   - PlayerGoal
+  - Circle
   layers:
   - Default
   - TransparentFX

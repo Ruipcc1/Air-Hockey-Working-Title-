@@ -10,6 +10,7 @@ public class AIScript : MonoBehaviour
     Vector2 startingPosition;
 
     public Rigidbody2D Puck;
+    public Rigidbody2D AiStriker;
 
     public Transform PlayerBoundaryHolder;
     private Boundary playerBoundary;
@@ -17,10 +18,15 @@ public class AIScript : MonoBehaviour
     public Transform PuckBoundaryHolder;
     private Boundary puckBoundary;
 
+    public Transform AIDefenseHolder;
+    private Boundary defenseBoundary;
+
     private Vector2 targetPosition;
 
     private bool isFirstTimeInOpponentsHalf = true;
     private float offsetYFromTarget;
+
+    public GameObject CircleCollider;
 
     private void Start()
     {
@@ -53,7 +59,16 @@ public class AIScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!PuckScript.WasGoal)
+        if (AiStriker.position.x > Puck.position.x)
+        {
+            CircleCollider.gameObject.SetActive(true);
+        }
+        else
+        {
+            CircleCollider.gameObject.SetActive(false);
+        }
+
+            if (!PuckScript.WasGoal)
         {
             float movementSpeed;
 
@@ -87,5 +102,34 @@ public class AIScript : MonoBehaviour
     public void ResetPosition()
     {
         rb.position = startingPosition;
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        MaxMovementSpeed = 30;
+
+    }
+
+    void OnTriggerEnter2D(Collision2D col) {
+        print("Hello World!");
+        MaxMovementSpeed = Random.Range(MaxMovementSpeed * 0.4f, MaxMovementSpeed);
+        if (col.gameObject.tag == "Circle")
+        {
+            targetPosition = new Vector2(playerBoundary.Right, playerBoundary.Right);
+        }
+}
+void OnCollisionExit2D(Collision2D col)
+    {
+        switch (GameValues.Difficulty)
+        {
+            case GameValues.Difficulties.Easy:
+                MaxMovementSpeed = 10;
+                break;
+            case GameValues.Difficulties.Medium:
+                MaxMovementSpeed = 15;
+                break;
+            case GameValues.Difficulties.Hard:
+                MaxMovementSpeed = 20;
+                break;
+        }
     }
 }
