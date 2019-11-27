@@ -58,7 +58,6 @@ public class AIScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (!PuckScript.WasGoal)
         {
             float movementSpeed;

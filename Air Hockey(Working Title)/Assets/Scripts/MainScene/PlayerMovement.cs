@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Vector2 startingPosition;
 
+    public float MaxMovementSpeed = 30;
+
     public Transform BoundaryHolder;
 
     Boundary playerBoundary;
@@ -59,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
                                                       Mathf.Clamp(mousePos.y, playerBoundary.Down,
                                                                   playerBoundary.Up));
                 rb.MovePosition(clampedMousePos);
+                rb.MovePosition(Vector2.MoveTowards(rb.position, clampedMousePos,
+                        MaxMovementSpeed * Time.fixedDeltaTime));
             }
         }
         else
