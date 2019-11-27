@@ -84,10 +84,24 @@ public class AIScript : MonoBehaviour
                     if (Puck.position.y > defenseMeasure.position.y)
                     {
                         targetPosition = new Vector2(defenseDown.position.x, defenseDown.position.y);
+                        if (AiStriker.position == defenseDown.position)
+                        {
+                            targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
+                                                    playerBoundary.Right),
+                                                    Mathf.Clamp(Puck.position.y, playerBoundary.Down,
+                                                    playerBoundary.Up));
+                        }
                     }
                     else if (Puck.position.y < defenseMeasure.position.y)
                     {
                         targetPosition = new Vector2(defenseUp.position.x, defenseUp.position.y);
+                        if (AiStriker.position == defenseUp.position)
+                        {
+                            targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
+                                                    playerBoundary.Right),
+                                                    Mathf.Clamp(Puck.position.y, playerBoundary.Down,
+                                                    playerBoundary.Up));
+                        }
                     }
                 }
 
