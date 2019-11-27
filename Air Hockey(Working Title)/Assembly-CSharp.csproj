@@ -64,7 +64,6 @@
      <Compile Include="Assets\Scripts\MainScene\UIScript.cs" />
      <Compile Include="Assets\Scripts\MainScene\UIScriptMultiplayer.cs" />
      <Compile Include="Assets\Scripts\MenuScenes\LocalManager.cs" />
-     <Compile Include="Assets\Scripts\MenuScenes\MenuManager.cs" />
      <Compile Include="Assets\Scripts\MenuScenes\MenuManagerAI.cs" />
      <Compile Include="Assets\Scripts\Types\Boundary.cs" />
      <None Include="Assets\Fonts\Force Commander\forcecommander.txt" />

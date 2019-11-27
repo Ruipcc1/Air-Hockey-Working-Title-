@@ -17,7 +17,7 @@ public class MenuManagerAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     #region Difficulty

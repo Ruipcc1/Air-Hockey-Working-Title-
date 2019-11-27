@@ -7,18 +7,22 @@ public class LocalManager : MonoBehaviour
 {
     public void PlayvsAI()
     {
-        SceneManager.LoadScene("PracticeMode");
+        SceneManager.LoadScene(4);
     }
     public void PlayvsPlayer()
     {
-        SceneManager.LoadScene("LocalMultiplayer");
+        SceneManager.LoadScene(2);
     }
     public void AiSelector()
     {
-        SceneManager.LoadScene("AISelection");
+        SceneManager.LoadScene(5);
     }
     public void Back()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(0);
+    }
+    public void Local()
+    {
+        SceneManager.LoadScene(3);
     }
 }

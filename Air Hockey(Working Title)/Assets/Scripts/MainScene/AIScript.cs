@@ -18,15 +18,14 @@ public class AIScript : MonoBehaviour
     public Transform PuckBoundaryHolder;
     private Boundary puckBoundary;
 
-    public Transform AIDefenseHolder;
-    private Boundary defenseBoundary;
+    public Rigidbody2D defenseUp;
+    public Rigidbody2D defenseDown;
+    public Rigidbody2D defenseMeasure;
 
     private Vector2 targetPosition;
 
     private bool isFirstTimeInOpponentsHalf = true;
     private float offsetYFromTarget;
-
-    public GameObject CircleCollider;
 
     private void Start()
     {
@@ -59,16 +58,8 @@ public class AIScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (AiStriker.position.x > Puck.position.x)
-        {
-            CircleCollider.gameObject.SetActive(true);
-        }
-        else
-        {
-            CircleCollider.gameObject.SetActive(false);
-        }
 
-            if (!PuckScript.WasGoal)
+        if (!PuckScript.WasGoal)
         {
             float movementSpeed;
 
@@ -87,18 +78,35 @@ public class AIScript : MonoBehaviour
             else
             {
                 isFirstTimeInOpponentsHalf = true;
-
                 movementSpeed = Random.Range(MaxMovementSpeed * 0.4f, MaxMovementSpeed);
-                targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
-                                            playerBoundary.Right),
-                                            Mathf.Clamp(Puck.position.y, playerBoundary.Down,
-                                            playerBoundary.Up));
+
+                if (AiStriker.position.x > Puck.position.x)
+                {
+                    if (Puck.position.y > defenseMeasure.position.y)
+                    {
+                        targetPosition = new Vector2(defenseDown.position.x, defenseDown.position.y);
+                    }
+                    else if (Puck.position.y < defenseMeasure.position.y)
+                    {
+                        targetPosition = new Vector2(defenseUp.position.x, defenseUp.position.y);
+                    }
+                }
+
+                else if (AiStriker.position.x < Puck.position.x)
+                {
+                    targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
+                                                playerBoundary.Right),
+                                                Mathf.Clamp(Puck.position.y, playerBoundary.Down,
+                                                playerBoundary.Up));
+                }
             }
 
-            rb.MovePosition(Vector2.MoveTowards(rb.position, targetPosition,
-                    movementSpeed * Time.fixedDeltaTime));
+                rb.MovePosition(Vector2.MoveTowards(rb.position, targetPosition,
+                        movementSpeed * Time.fixedDeltaTime));
+            }
         }
-    }
+    
+    
     public void ResetPosition()
     {
         rb.position = startingPosition;
@@ -108,16 +116,7 @@ public class AIScript : MonoBehaviour
         MaxMovementSpeed = 30;
 
     }
-
-    void OnTriggerEnter2D(Collision2D col) {
-        print("Hello World!");
-        MaxMovementSpeed = Random.Range(MaxMovementSpeed * 0.4f, MaxMovementSpeed);
-        if (col.gameObject.tag == "Circle")
-        {
-            targetPosition = new Vector2(playerBoundary.Right, playerBoundary.Right);
-        }
-}
-void OnCollisionExit2D(Collision2D col)
+    void OnCollisionExit2D(Collision2D col)
     {
         switch (GameValues.Difficulty)
         {

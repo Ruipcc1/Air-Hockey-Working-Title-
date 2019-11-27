@@ -310,7 +310,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1154540860}
-        m_MethodName: PlayLocal
+        m_MethodName: Local
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154540859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86bf0d9ff64590741a2addec60ea4090, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e39e03ee4d64b48a24d4025c576283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1154540861
