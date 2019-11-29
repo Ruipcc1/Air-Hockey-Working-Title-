@@ -22,6 +22,10 @@ public class UIScript : MonoBehaviour
     public PlayerMovement playerMovement;
     public AIScript aiScript;
 
+    void Start()
+    {
+        Time.timeScale = 1;
+    }
     public void ShowRestartCanvas(bool didAiWin)
     {
         Time.timeScale = 0;
