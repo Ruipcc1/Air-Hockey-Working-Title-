@@ -8,8 +8,10 @@ public class Snowball : MonoBehaviour
     float y;
     float z;
     Vector2 pos;
+    Vector2 dest;
     float side;
-    public Rigidbody2D player;
+    public GameObject iceR;
+    public GameObject iceB;
     public Vector2 targetPosition;
     public float MaxMovementSpeed;
     Rigidbody2D rb;
@@ -36,8 +38,10 @@ public class Snowball : MonoBehaviour
             x = Random.Range(-12, 12);
             y = -9;
             pos = new Vector2(x, y);
+            x = Random.Range(-6, 6);
+            dest = new Vector2(x, 9);
             transform.position = pos;
-            targetPosition = new Vector2(player.position.x, player.position.y);
+            targetPosition = dest;
             StartCoroutine(Throw());
         }
         else if(side == 1)
@@ -45,8 +49,10 @@ public class Snowball : MonoBehaviour
             x = 14;
             y = Random.Range(-9, 9);
             pos = new Vector2(x, y);
+            y = Random.Range(-4, 4);
+            dest = new Vector2(-14, y);
             transform.position = pos;
-            targetPosition = new Vector2(player.position.x, player.position.y);
+            targetPosition = dest;
             StartCoroutine(Throw());
         }
         else if (side == 2)
@@ -54,8 +60,10 @@ public class Snowball : MonoBehaviour
             x = -14;
             y = Random.Range(-9, 9);
             pos = new Vector2(x, y);
+            y = Random.Range(-4, 4);
+            dest = new Vector2(14, y);
             transform.position = pos;
-            targetPosition = new Vector2(player.position.x, player.position.y);
+            targetPosition = dest;
             StartCoroutine(Throw());
         }
         else if (side == 3)
@@ -63,9 +71,64 @@ public class Snowball : MonoBehaviour
             x = Random.Range(-12, 12);
             y = 9;
             pos = new Vector2(x, y);
+            x = Random.Range(-6, 6);
             transform.position = pos;
-            targetPosition = new Vector2(player.position.x, player.position.y);
+            dest = new Vector2(x, -9);
+            targetPosition = dest;
             StartCoroutine(Throw());
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "PlayerRed")
+        {
+            iceR.transform.gameObject.SetActive(true);
+            GameObject.FindWithTag("PlayerRed").GetComponent<PlayerMovement>().MaxMovementSpeed = 0;
+            StartCoroutine(FreezeR());
+        }
+        if (other.gameObject.tag == "PlayerBlue")
+        {
+            iceB.transform.gameObject.SetActive(true);
+            GameObject.FindWithTag("PlayerBlue").GetComponent<PlayerMovement>().MaxMovementSpeed = 0;
+            StartCoroutine(FreezeB());
+        }
+        if (other.gameObject.tag == "Enemy")
+        {
+            iceB.transform.gameObject.SetActive(true);
+            GameObject.FindWithTag("Enemy").GetComponent<AIScript>().MaxMovementSpeed = 0;
+            StartCoroutine(Freeze1());
+        }
+    }
+
+    IEnumerator FreezeR()
+    {
+        yield return new WaitForSeconds(2);
+        GameObject.FindWithTag("PlayerRed").GetComponent<PlayerMovement>().MaxMovementSpeed = 30;
+        iceR.transform.gameObject.SetActive(false);
+    }
+
+    IEnumerator FreezeB()
+    {
+        yield return new WaitForSeconds(2);
+        GameObject.FindWithTag("PlayerBlue").GetComponent<PlayerMovement>().MaxMovementSpeed = 30;
+        iceB.transform.gameObject.SetActive(false);
+    }
+
+    IEnumerator Freeze1()
+    {
+        yield return new WaitForSeconds(2);
+        iceB.transform.gameObject.SetActive(false);
+        switch (GameValues.Difficulty)
+        {
+            case GameValues.Difficulties.Easy:
+                GameObject.FindWithTag("Enemy").GetComponent<AIScript>().MaxMovementSpeed = 10;
+                break;
+            case GameValues.Difficulties.Medium:
+                GameObject.FindWithTag("Enemy").GetComponent<AIScript>().MaxMovementSpeed = 15;
+                break;
+            case GameValues.Difficulties.Hard:
+                GameObject.FindWithTag("Enemy").GetComponent<AIScript>().MaxMovementSpeed = 20;
+                break;
         }
     }
 }
