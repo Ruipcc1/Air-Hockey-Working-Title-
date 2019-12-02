@@ -10,6 +10,10 @@ TagManager:
   - PlayerRed
   - PlayerBlue
   - Enemy
+  - LeftFirePit
+  - RightFirePit
+  - Puck
+  - Tornado
   layers:
   - Default
   - TransparentFX

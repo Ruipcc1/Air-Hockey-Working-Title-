@@ -6,6 +6,7 @@ public class PuckScript : MonoBehaviour
 {
 
     public ScoreScript ScoreScriptInstance;
+    public Fireball FlamingBall;
     public static bool WasGoal { get; private set; }
     private Rigidbody2D rb;
     public bool BlueGoal;
@@ -51,6 +52,7 @@ public class PuckScript : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1);
         WasGoal = false;
+        
         if (BlueGoal)
         {
             rb.position = new Vector2(-6, 0);
@@ -63,6 +65,8 @@ public class PuckScript : MonoBehaviour
             rb.position = new Vector2(6, 0);
             rb.velocity = new Vector2(0, 0);
         }
+        FlamingBall.FlameBall = false;
+        FlamingBall.Flames.transform.gameObject.SetActive(false);
     }
     public void CenterPuck()
     {
