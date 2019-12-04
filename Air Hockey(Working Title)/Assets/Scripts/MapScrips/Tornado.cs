@@ -9,15 +9,17 @@ public class Tornado : MonoBehaviour
     private Rigidbody2D rb;
     float x;
     float y;
-    private bool Flung;
+    public bool Flung;
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         Flung = false;
+        MaxMovementSpeed = 30;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Flung)
         {
@@ -30,11 +32,23 @@ public class Tornado : MonoBehaviour
     {
         if (other.gameObject.tag == "Tornado")
         {
-            x = Random.Range(-12, 12);
+            x = Random.Range(-9, 9);
             y = Random.Range(-4, 4);
             targetPosition = new Vector2(x, y);
             Flung = true;
             StartCoroutine(Windy());
+        }
+        if (other.gameObject.tag == "PlayerBlue")
+        {
+            Flung = false;
+        }
+        if (other.gameObject.tag == "Enemy")
+        {
+            Flung = false;
+        }
+        if (other.gameObject.tag == "PlayerRed")
+        {
+            Flung = false;
         }
     }
 

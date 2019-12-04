@@ -7,6 +7,7 @@ public class PuckScript : MonoBehaviour
 
     public ScoreScript ScoreScriptInstance;
     public Fireball FlamingBall;
+    public Tornado Fling;
     public static bool WasGoal { get; private set; }
     private Rigidbody2D rb;
     public bool BlueGoal;
@@ -67,6 +68,7 @@ public class PuckScript : MonoBehaviour
         }
         FlamingBall.FlameBall = false;
         FlamingBall.Flames.transform.gameObject.SetActive(false);
+        Fling.Flung = false;
     }
     public void CenterPuck()
     {

@@ -9,7 +9,6 @@ public class Fireball : MonoBehaviour
     private Rigidbody2D rb;
     private float PitN;
     public bool FlameBall;
-    private Vector2 dest;
     public GameObject Fire1;
     public GameObject Fire2;
     public GameObject Fire3;
@@ -54,7 +53,6 @@ public class Fireball : MonoBehaviour
             Fire2.transform.gameObject.SetActive(true);
             Fire3.transform.gameObject.SetActive(false);
             Fire4.transform.gameObject.SetActive(false);
-            targetPosition = dest;
             StartCoroutine(FirePit());
         }
         else if (PitN == 2)
@@ -63,7 +61,6 @@ public class Fireball : MonoBehaviour
             Fire2.transform.gameObject.SetActive(false);
             Fire3.transform.gameObject.SetActive(true);
             Fire4.transform.gameObject.SetActive(false);
-            targetPosition = dest;
             StartCoroutine(FirePit());
         }
         else if (PitN == 3)
@@ -72,7 +69,6 @@ public class Fireball : MonoBehaviour
             Fire2.transform.gameObject.SetActive(false);
             Fire3.transform.gameObject.SetActive(false);
             Fire4.transform.gameObject.SetActive(true);
-            targetPosition = dest;
             StartCoroutine(FirePit());
         }
     }
