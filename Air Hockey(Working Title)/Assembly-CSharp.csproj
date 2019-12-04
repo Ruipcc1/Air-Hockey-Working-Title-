@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Mapselector.cs" />
      <Compile Include="Assets\Scripts\GameValues.cs" />
      <Compile Include="Assets\Scripts\MainScene\AIScript.cs" />
      <Compile Include="Assets\Scripts\MainScene\AudioManager.cs" />
@@ -68,6 +69,7 @@
      <Compile Include="Assets\Scripts\MapScrips\Snowball.cs" />
      <Compile Include="Assets\Scripts\MapScrips\Tornado.cs" />
      <Compile Include="Assets\Scripts\MenuScenes\LocalManager.cs" />
+     <Compile Include="Assets\Scripts\MenuScenes\MapSelection.cs" />
      <Compile Include="Assets\Scripts\MenuScenes\MenuManagerAI.cs" />
      <Compile Include="Assets\Scripts\Types\Boundary.cs" />
      <Compile Include="Assets\TornadoMovement.cs" />

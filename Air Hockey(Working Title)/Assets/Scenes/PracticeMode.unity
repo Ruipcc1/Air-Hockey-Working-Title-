@@ -12426,6 +12426,7 @@ GameObject:
   - component: {fileID: 1962993802}
   - component: {fileID: 1962993803}
   - component: {fileID: 1962993804}
+  - component: {fileID: 1962993805}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -12602,6 +12603,21 @@ MonoBehaviour:
   puckScript: {fileID: 284516900}
   playerMovement: {fileID: 504605242}
   aiScript: {fileID: 1641563620}
+--- !u!114 &1962993805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962993799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b01b38cddbbc434385dc0756a2e65de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateMap: {fileID: 0}
+  Maps: []
+  m: 0
 --- !u!1 &1965285468
 GameObject:
   m_ObjectHideFlags: 0
