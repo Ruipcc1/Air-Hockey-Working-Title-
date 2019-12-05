@@ -9,17 +9,43 @@ public class Snowball : MonoBehaviour
     float z;
     Vector2 pos;
     Vector2 dest;
+    GameObject Blue;
+    GameObject Red;
+    Rigidbody2D BlueStriker;
+    Rigidbody2D RedStriker;
     float side;
     public GameObject iceR;
     public GameObject iceB;
+    private GameObject ICER;
+    private GameObject ICEB;
     public Vector2 targetPosition;
     public float MaxMovementSpeed;
     Rigidbody2D rb;
 
     void Start()
     {
+        Blue = GameObject.Find("PlayerBlue");
+        Red = GameObject.Find("PlayerRed");
+
+        BlueStriker = Blue.GetComponent<Rigidbody2D>();
+        RedStriker = Red.GetComponent<Rigidbody2D>();
+
+        float blueX = BlueStriker.position.x;
+        float blueY = BlueStriker.position.y;
+        float redX = RedStriker.position.x;
+        float redY = RedStriker.position.y;
+
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(Throw());
+
+        ICER = Instantiate(iceR, new Vector2(redX, redY) , Quaternion.identity);
+        ICER.transform.SetParent(Red.transform);
+
+        ICEB = Instantiate(iceR, new Vector2(blueX, blueY), Quaternion.identity);
+        ICEB.transform.SetParent(Blue.transform);
+
+        ICEB.SetActive(false);
+        ICER.SetActive(false);
     }
 
     void FixedUpdate()
@@ -39,9 +65,8 @@ public class Snowball : MonoBehaviour
             y = -9;
             pos = new Vector2(x, y);
             x = Random.Range(-6, 6);
-            dest = new Vector2(x, 9);
+            targetPosition = new Vector2(x, 9);
             transform.position = pos;
-            targetPosition = dest;
             StartCoroutine(Throw());
         }
         else if(side == 1)
@@ -50,9 +75,8 @@ public class Snowball : MonoBehaviour
             y = Random.Range(-9, 9);
             pos = new Vector2(x, y);
             y = Random.Range(-4, 4);
-            dest = new Vector2(-14, y);
+            targetPosition = new Vector2(-14, y);
             transform.position = pos;
-            targetPosition = dest;
             StartCoroutine(Throw());
         }
         else if (side == 2)
@@ -61,9 +85,8 @@ public class Snowball : MonoBehaviour
             y = Random.Range(-9, 9);
             pos = new Vector2(x, y);
             y = Random.Range(-4, 4);
-            dest = new Vector2(14, y);
+            targetPosition = new Vector2(14, y);
             transform.position = pos;
-            targetPosition = dest;
             StartCoroutine(Throw());
         }
         else if (side == 3)
@@ -73,8 +96,7 @@ public class Snowball : MonoBehaviour
             pos = new Vector2(x, y);
             x = Random.Range(-6, 6);
             transform.position = pos;
-            dest = new Vector2(x, -9);
-            targetPosition = dest;
+            targetPosition = new Vector2(x, -9);
             StartCoroutine(Throw());
         }
     }
@@ -82,19 +104,19 @@ public class Snowball : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerRed")
         {
-            iceR.transform.gameObject.SetActive(true);
+            ICER.transform.gameObject.SetActive(true);
             GameObject.FindWithTag("PlayerRed").GetComponent<PlayerMovement>().MaxMovementSpeed = 0;
             StartCoroutine(FreezeR());
         }
         if (other.gameObject.tag == "PlayerBlue")
         {
-            iceB.transform.gameObject.SetActive(true);
+            ICEB.transform.gameObject.SetActive(true);
             GameObject.FindWithTag("PlayerBlue").GetComponent<PlayerMovement>().MaxMovementSpeed = 0;
             StartCoroutine(FreezeB());
         }
         if (other.gameObject.tag == "Enemy")
         {
-            iceB.transform.gameObject.SetActive(true);
+            ICEB.transform.gameObject.SetActive(true);
             GameObject.FindWithTag("Enemy").GetComponent<AIScript>().MaxMovementSpeed = 0;
             StartCoroutine(Freeze1());
         }
@@ -104,20 +126,20 @@ public class Snowball : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         GameObject.FindWithTag("PlayerRed").GetComponent<PlayerMovement>().MaxMovementSpeed = 30;
-        iceR.transform.gameObject.SetActive(false);
+        ICER.transform.gameObject.SetActive(false);
     }
 
     IEnumerator FreezeB()
     {
         yield return new WaitForSeconds(2);
         GameObject.FindWithTag("PlayerBlue").GetComponent<PlayerMovement>().MaxMovementSpeed = 30;
-        iceB.transform.gameObject.SetActive(false);
+        ICEB.transform.gameObject.SetActive(false);
     }
 
     IEnumerator Freeze1()
     {
         yield return new WaitForSeconds(2);
-        iceB.transform.gameObject.SetActive(false);
+        ICEB.transform.gameObject.SetActive(false);
         switch (GameValues.Difficulty)
         {
             case GameValues.Difficulties.Easy:

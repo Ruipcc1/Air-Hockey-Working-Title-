@@ -23,8 +23,14 @@ public class MapSelection : MonoBehaviour
             CurrentMap = Maps[i];
             CurrentMap.SetActive(true);
         }
+        if (i == -1)
+        {
+            i = 4;
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(true);
+        }
     }
-
+    #region PresentMap
     public void RightArrow()
     {
         CurrentMap = Maps[i];
@@ -43,5 +49,7 @@ public class MapSelection : MonoBehaviour
         CurrentMap = Maps[i];
         CurrentMap.SetActive(true);
     }
+    #endregion
+    
 }
 

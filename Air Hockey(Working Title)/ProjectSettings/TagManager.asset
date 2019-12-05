@@ -14,6 +14,7 @@ TagManager:
   - RightFirePit
   - Puck
   - Tornado
+  - Snowball
   layers:
   - Default
   - TransparentFX

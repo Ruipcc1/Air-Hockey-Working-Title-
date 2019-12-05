@@ -11,23 +11,23 @@ public class LocalManager : MonoBehaviour
         SceneManager.LoadScene(4);
         if(whichMap.i == 0)
         {
-            PlayerPrefs.SetInt("Map", 0);
+            GameValues.PresentMap = GameValues.SelectedMap.Basic;
         }
         else if (whichMap.i == 1)
         {
-            PlayerPrefs.SetInt("Map", 1);
+            GameValues.PresentMap = GameValues.SelectedMap.Earth;
         }
         else if (whichMap.i == 2)
         {
-            PlayerPrefs.SetInt("Map", 2);
+            GameValues.PresentMap = GameValues.SelectedMap.Wind;
         }
         else if (whichMap.i == 3)
         {
-            PlayerPrefs.SetInt("Map", 3);
+            GameValues.PresentMap = GameValues.SelectedMap.Ice;
         }
         else if (whichMap.i == 4)
         {
-            PlayerPrefs.SetInt("Map", 4);
+            GameValues.PresentMap = GameValues.SelectedMap.Fire;
         }
     }
     public void PlayvsPlayer()
