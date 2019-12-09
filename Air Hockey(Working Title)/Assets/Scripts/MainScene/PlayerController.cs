@@ -6,21 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public List<PlayerMovementAndroid> Players = new List<PlayerMovementAndroid>();
 
-    public GameObject AiPlayer;
-
-    private void Start()
-    {
-        if (GameValues.IsMultiplayer)
-        {
-            AiPlayer.GetComponent<PlayerMovement>().enabled = true;
-            AiPlayer.GetComponent<AIScript>().enabled = false;
-        }
-        else
-        {
-            AiPlayer.GetComponent<PlayerMovement>().enabled = false;
-            AiPlayer.GetComponent<AIScript>().enabled = true;
-        }
-    }
     // Update is called once per frame
     void Update()
     {

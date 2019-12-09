@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LocalManager : MonoBehaviour
 {
+
     public MapSelection whichMap;
+
     public void PlayvsAI()
     {
         SceneManager.LoadScene(4);
@@ -33,6 +35,26 @@ public class LocalManager : MonoBehaviour
     public void PlayvsPlayer()
     {
         SceneManager.LoadScene(2);
+        if (whichMap.i == 0)
+        {
+            GameValues.PresentMap = GameValues.SelectedMap.Basic;
+        }
+        else if (whichMap.i == 1)
+        {
+            GameValues.PresentMap = GameValues.SelectedMap.Earth;
+        }
+        else if (whichMap.i == 2)
+        {
+            GameValues.PresentMap = GameValues.SelectedMap.Wind;
+        }
+        else if (whichMap.i == 3)
+        {
+            GameValues.PresentMap = GameValues.SelectedMap.Ice;
+        }
+        else if (whichMap.i == 4)
+        {
+            GameValues.PresentMap = GameValues.SelectedMap.Fire;
+        }
     }
     public void AiSelector()
     {
@@ -45,5 +67,10 @@ public class LocalManager : MonoBehaviour
     public void Local()
     {
         SceneManager.LoadScene(3);
+    }
+    public void PvPSelector()
+    {
+        SceneManager.LoadScene(6);
+        
     }
 }

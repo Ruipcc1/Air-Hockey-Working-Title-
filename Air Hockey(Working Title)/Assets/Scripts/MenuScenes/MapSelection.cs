@@ -18,36 +18,48 @@ public class MapSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(i == 5){
-            i = 0;
-            CurrentMap = Maps[i];
-            CurrentMap.SetActive(true);
-        }
-        if (i == -1)
-        {
-            i = 4;
-            CurrentMap = Maps[i];
-            CurrentMap.SetActive(true);
-        }
+        
     }
     #region PresentMap
     public void RightArrow()
     {
-        CurrentMap = Maps[i];
-        CurrentMap.SetActive(false);
-        i++;
-        CurrentMap = Maps[i];
-        CurrentMap.SetActive(true);
+        if (i == 4)
+        {
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(false);
+            i = 0;
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(true);
+        }
+        else
+        {
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(false);
+            i++;
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(true);
+        }
 
     }
 
     public void LeftArrow()
     {
-        CurrentMap = Maps[i];
-        CurrentMap.SetActive(false);
-        i--;
-        CurrentMap = Maps[i];
-        CurrentMap.SetActive(true);
+        if (i == 0)
+        {
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(false);
+            i = 4;
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(true);
+        }
+        else
+        {
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(false);
+            i--;
+            CurrentMap = Maps[i];
+            CurrentMap.SetActive(true);
+        }
     }
     #endregion
     
