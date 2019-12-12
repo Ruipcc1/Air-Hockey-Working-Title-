@@ -26,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LocalPvPSelection.unity
     guid: 51530dc7f8930f34da73cc837a8c23d1
+  - enabled: 1
+    path: Assets/Scenes/StoryMode.unity
+    guid: 596cdf785004f3642912090193ed2c9b
+  - enabled: 1
+    path: Assets/Scenes/StoryGames.unity
+    guid: 80cbfb7b76921d44b9e9ecf608b1796a
+  - enabled: 1
+    path: Assets/Scenes/EndingCredits.unity
+    guid: 974401abdfd329e4397916f1fe699105
   m_configObjects: {}

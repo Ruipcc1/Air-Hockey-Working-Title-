@@ -71,6 +71,13 @@ public class LocalManager : MonoBehaviour
     public void PvPSelector()
     {
         SceneManager.LoadScene(6);
-        
+    }
+    public void StorySelector()
+    {
+        SceneManager.LoadScene(7);
+    }
+    public void StoryMode()
+    {
+        SceneManager.LoadScene(8);
     }
 }

@@ -23,6 +23,7 @@ public class AIScript : MonoBehaviour
     public Rigidbody2D defenseMeasure;
 
     private Vector2 targetPosition;
+    private bool isBehind;
 
     private bool isFirstTimeInOpponentsHalf = true;
     private float offsetYFromTarget;
@@ -81,11 +82,16 @@ public class AIScript : MonoBehaviour
 
                 if (AiStriker.position.x > Puck.position.x)
                 {
+                    isBehind = true;
                     if (Puck.position.y > defenseMeasure.position.y)
                     {
-                        targetPosition = new Vector2(defenseDown.position.x, defenseDown.position.y);
+                        if (isBehind)
+                        {
+                            targetPosition = new Vector2(defenseDown.position.x, defenseDown.position.y);
+                        }
                         if (AiStriker.position == defenseDown.position)
                         {
+                            isBehind = false;
                             targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
                                                     playerBoundary.Right),
                                                     Mathf.Clamp(Puck.position.y, playerBoundary.Down,
@@ -94,9 +100,13 @@ public class AIScript : MonoBehaviour
                     }
                     else if (Puck.position.y < defenseMeasure.position.y)
                     {
-                        targetPosition = new Vector2(defenseUp.position.x, defenseUp.position.y);
+                        if (isBehind)
+                        {
+                            targetPosition = new Vector2(defenseUp.position.x, defenseUp.position.y);
+                        }
                         if (AiStriker.position == defenseUp.position)
                         {
+                            isBehind = false;
                             targetPosition = new Vector2(Mathf.Clamp(Puck.position.x, playerBoundary.Left,
                                                     playerBoundary.Right),
                                                     Mathf.Clamp(Puck.position.y, playerBoundary.Down,
