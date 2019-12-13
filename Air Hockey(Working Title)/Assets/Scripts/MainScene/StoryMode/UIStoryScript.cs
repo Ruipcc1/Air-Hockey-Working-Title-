@@ -105,9 +105,7 @@ public class UIStoryScript : MonoBehaviour
         i++;
         playingMap = Maps[i];
         currentMap = Instantiate(playingMap, new Vector3(0, 0, 0), Quaternion.identity);
-        CanvasRestart.SetActive(false);
-
-        
+        CanvasRestart.SetActive(false); 
     }
     public void StorySelector()
     {

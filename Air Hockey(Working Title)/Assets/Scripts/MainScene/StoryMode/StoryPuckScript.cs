@@ -10,6 +10,8 @@ public class StoryPuckScript : MonoBehaviour
     public Tornado Fling;
     public static bool WasGoal { get; private set; }
     private Rigidbody2D rb;
+    private Vector2 currentPosition;
+    private Vector2 previousPosition;
     public bool BlueGoal;
     public float MaxSpeed;
 
@@ -20,6 +22,19 @@ public class StoryPuckScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         WasGoal = false;
+        StartCoroutine(Unstuck());
+    }
+
+    private void Update()
+    {
+        if(rb.position.y > 6)
+        {
+            CenterPuck();
+        }
+        if(rb.position.y < -6)
+        {
+            CenterPuck();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -70,6 +85,19 @@ public class StoryPuckScript : MonoBehaviour
         FlamingBall.Flames.transform.gameObject.SetActive(false);
         Fling.Flung = false;
     }
+
+    private IEnumerator Unstuck()
+    {
+        previousPosition = rb.position;
+        yield return new WaitForSecondsRealtime(3);
+        currentPosition = rb.position;
+        if (previousPosition == currentPosition)
+        {
+            CenterPuck();
+        }
+        StartCoroutine(Unstuck());
+    }
+
     public void CenterPuck()
     {
         rb.position = new Vector2(0, 0);

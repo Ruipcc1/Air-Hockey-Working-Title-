@@ -80,4 +80,8 @@ public class LocalManager : MonoBehaviour
     {
         SceneManager.LoadScene(8);
     }
+    public void LevelSelector()
+    {
+        SceneManager.LoadScene(10);
+    }
 }

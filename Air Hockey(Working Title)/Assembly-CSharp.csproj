@@ -60,7 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CreditsEnd.cs" />
+    <Compile Include="Assets\Scripts\ChallengeMode\ChallengePuck.cs" />
+    <Compile Include="Assets\Scripts\ChallengeMode\ChallengeUIScript.cs" />
     <Compile Include="Assets\Scripts\GameValues.cs" />
     <Compile Include="Assets\Scripts\MainScene\AIScript.cs" />
     <Compile Include="Assets\Scripts\MainScene\AudioManager.cs" />
@@ -69,17 +70,20 @@
     <Compile Include="Assets\Scripts\MainScene\PlayerMovementAndroid.cs" />
     <Compile Include="Assets\Scripts\MainScene\PuckScript.cs" />
     <Compile Include="Assets\Scripts\MainScene\ScoreScript.cs" />
-    <Compile Include="Assets\Scripts\MainScene\StoryPuckScript.cs" />
-    <Compile Include="Assets\Scripts\MainScene\StoryScoreScript.cs" />
+    <Compile Include="Assets\Scripts\MainScene\StoryMode\StoryPuckScript.cs" />
+    <Compile Include="Assets\Scripts\MainScene\StoryMode\StoryScoreScript.cs" />
+    <Compile Include="Assets\Scripts\MainScene\StoryMode\UIStoryScript.cs" />
     <Compile Include="Assets\Scripts\MainScene\UIScript.cs" />
     <Compile Include="Assets\Scripts\MainScene\UIScriptMultiplayer.cs" />
-    <Compile Include="Assets\Scripts\MainScene\UIStoryScript.cs" />
     <Compile Include="Assets\Scripts\MapScrips\Fireball.cs" />
     <Compile Include="Assets\Scripts\MapScrips\FirePillars.cs" />
     <Compile Include="Assets\Scripts\MapScrips\Pillar.cs" />
     <Compile Include="Assets\Scripts\MapScrips\Snowball.cs" />
     <Compile Include="Assets\Scripts\MapScrips\Tornado.cs" />
     <Compile Include="Assets\Scripts\MapScrips\TornadoMovement.cs" />
+    <Compile Include="Assets\Scripts\MenuScenes\CreditsEnd.cs" />
+    <Compile Include="Assets\Scripts\MenuScenes\LevelSelection.cs" />
+    <Compile Include="Assets\Scripts\MenuScenes\LevelSelector.cs" />
     <Compile Include="Assets\Scripts\MenuScenes\LocalManager.cs" />
     <Compile Include="Assets\Scripts\MenuScenes\MapSelection.cs" />
     <Compile Include="Assets\Scripts\MenuScenes\Mapselector.cs" />

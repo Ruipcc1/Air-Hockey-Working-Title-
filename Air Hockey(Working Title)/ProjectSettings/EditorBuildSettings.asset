@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndingCredits.unity
     guid: 974401abdfd329e4397916f1fe699105
+  - enabled: 1
+    path: Assets/Scenes/LevelSelection.unity
+    guid: 187dbb77976a9cf41a380e278c67fd7d
+  - enabled: 1
+    path: Assets/Scenes/ChallengeMode.unity
+    guid: 3ea5656e19ab3c34596b875a26a242ea
   m_configObjects: {}
